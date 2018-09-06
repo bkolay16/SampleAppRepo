@@ -1,0 +1,61 @@
+This application will need java 8 and Junit 4 jar in the classpath.
+
+I have added two test classes. ProcessInstructionImplTest is the Junit test class. In this test class following sample data has been used.
+
+foo:B:0.50:SGP:01 Jan 2016:02 Jan 2016:200:100.25
+bar:S:0.22:AED:05 Jan 2016:07 Jan 2016:450:150.5
+comp1:S:0.22:AED:29 Aug 2018:31 Aug 2018:100:150.5
+comp2:S:0.22:AED:29 Aug 2018:31 Aug 2018:550:150.5
+bar:B:0.50:SGP:29 Aug 2018:31 Aug 2018:550:150.5
+
+In the above sample data all the fields are separated by :(colon). Data format is <entity name>:<buy/sell>:<agreed fx>:<currency>:<instrauction date>:<settlement date>:<units>:<unit price>
+After running the Junit test the below report will printed in the console.
+
+****************Everyday incoming and outgoing settlement report******************
+Actual settlement Date              Incoming Settled amount (USD)        Outgoing Settled amount (USD)
+--------------------                ---------------------------        -------------------------
+04 Jan 2016                           0.0                                     10025.0              
+07 Jan 2016                           14899.5                                     0.0              
+31 Aug 2018                           0.0                                     41387.5              
+02 Sep 2018                           21521.5                                     0.0              
+
+Entities ranking for incoming transactions 
+-------------------------------------------
+1  comp2
+2  bar
+3  comp1
+Entities ranking for outgoing transactions 
+------------------------------------------
+1  bar
+2  foo
+
+
+
+
+By running RunTradeDynamicTest class also application can be tested. It will dynamically accept input from the console. After providing one sample data press enter and then provide 2nd data.
+When done just type report which will print report in the console. Below is the sequence of entering data and command and generated output.
+
+
+foo:B:0.50:SGP:01 Jan 2016:02 Jan 2016:200:100.25
+bar:S:0.22:AED:05 Jan 2016:07 Jan 2016:450:150.5
+comp1:S:0.22:AED:29 Aug 2018:31 Aug 2018:100:150.5
+comp2:S:0.22:AED:29 Aug 2018:31 Aug 2018:550:150.5
+bar:B:0.50:SGP:29 Aug 2018:31 Aug 2018:550:150.5
+report
+****************Everyday incoming and outgoing settlement report******************
+Actual settlement Date              Incoming Settled amount (USD)        Outgoing Settled amount (USD)
+--------------------                ---------------------------        -------------------------
+04 Jan 2016                           0.0                                     10025.0              
+07 Jan 2016                           14899.5                                     0.0              
+31 Aug 2018                           0.0                                     41387.5              
+02 Sep 2018                           21521.5                                     0.0              
+
+Entities ranking for incoming transactions 
+-------------------------------------------
+1  comp2
+2  bar
+3  comp1
+Entities ranking for outgoing transactions 
+------------------------------------------
+1  bar
+2  foo
